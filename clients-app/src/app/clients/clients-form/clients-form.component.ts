@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Client } from '../client'
 
 @Component({
   selector: 'app-clients-form',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./clients-form.component.css']
 })
 export class ClientsFormComponent {
+  client?: Client;
 
+  constructor() { }
+
+  ngOnInit(): void {
+    
+  }
 }
