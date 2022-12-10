@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Client } from '../client'
 
 @Component({
@@ -6,12 +6,19 @@ import { Client } from '../client'
   templateUrl: './clients-form.component.html',
   styleUrls: ['./clients-form.component.css']
 })
-export class ClientsFormComponent {
-  client?: Client;
+export class ClientsFormComponent implements OnInit {
+  client: Client;
 
-  constructor() { }
+  constructor() { 
+    this.client = new Client();
+  }
 
   ngOnInit(): void {
     
   }
+
+  clicar() {
+    console.log(this.client);
+  }
+
 }
