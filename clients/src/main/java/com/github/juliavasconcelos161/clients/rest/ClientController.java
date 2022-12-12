@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/clients")
@@ -21,6 +22,11 @@ public class ClientController {
         this.repository = repository;
     }
 
+    @GetMapping
+    public List<Client> getAll()
+    {
+        return repository.findAll();
+    }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Client saveClient(@RequestBody @Valid Client client)
