@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-2">
-            <button class="btn btn-warning">
+            <button class="btn btn-warning" (click)="newRegistration()">
                 <i class="fa fa-plus"></i>Novo
             </button>
         </div>
@@ -29,6 +29,11 @@
                         <td>{{ client.name }}</td>
                         <td>{{ client.cpf }}</td>
                         <td>{{ client.registrationDate }}</td>
+                        <td>
+                            <button class="btn btn-primary" routerLink="/clients-form/{{ client.id }}">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
