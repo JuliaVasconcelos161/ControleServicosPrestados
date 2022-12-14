@@ -10,7 +10,7 @@
                     <label>Cliente:</label>
                     <select class="form-control" 
                         [ngModelOptions]="{standalone: true}"
-                        [(ngModel)]="service.clientId">
+                        [(ngModel)]="providedService.clientId">
                         <option value="">Selecione...</option>
                         <option *ngFor="let client of clients" [ngValue]="client.id">
                             {{ client.name }}
@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Descrição:</label>
-                    <input class="form-control" [(ngModel)]="service.description" type="text" name="description" id="inputDescription">
+                    <input class="form-control" [(ngModel)]="providedService.description" type="text" name="description" id="inputDescription">
                 </div>
             </div>
         </div>
@@ -32,14 +32,14 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Data:</label>
-                    <input class="form-control" [(ngModel)]="service.date" type="text" name="date" id="inputDate">
+                    <input class="form-control" [(ngModel)]="providedService.date" type="text" name="date" id="inputDate">
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Preço:</label>
-                    <input class="form-control" [(ngModel)]="service.price" type="text" name="price" id="inputPrice">
+                    <input class="form-control" [(ngModel)]="providedService.price" type="text" name="price" id="inputPrice">
                 </div>
             </div>
         </div>
