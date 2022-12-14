@@ -13,6 +13,8 @@ import { ProvidedServiceService } from '../../provided-service.service';
 export class ProvidedServiceFormComponent implements OnInit {
     clients: Client[] = [];
     providedService: ProvidedService;
+    success: boolean = false;
+    errors?: String[];
     
     constructor(
       private clientService: ClientsService,
@@ -30,8 +32,13 @@ export class ProvidedServiceFormComponent implements OnInit {
     onSubmit() {
       this.service
         .saveProvidedService(this.providedService)
-        .subscribe( response => {
-          console.log(response);
+        .subscribe(response => {
+          this.success = true;
+          this.errors = [];
+          this.providedService = new ProvidedService();
+        }, errorResponse => {
+          this.success = false;
+          this.errors = errorResponse.error.errors;
         });
     }
 }

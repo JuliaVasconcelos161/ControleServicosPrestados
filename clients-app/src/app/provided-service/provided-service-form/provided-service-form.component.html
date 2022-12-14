@@ -6,8 +6,18 @@
     <form #form="ngForm" (submit)="onSubmit()">
         <div class="row">
             <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="success == true">
+                    Serviço salvo com sucesso!
+                </div>
+                <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+                    {{ error }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <div class="form-group">
-                    <label>Cliente:</label>
+                    <label>Cliente: *</label>
                     <select class="form-control" 
                         [ngModelOptions]="{standalone: true}"
                         [(ngModel)]="providedService.clientId">
@@ -22,7 +32,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label>Descrição:</label>
+                    <label>Descrição: *</label>
                     <input class="form-control" [(ngModel)]="providedService.description" type="text" name="description" id="inputDescription">
                 </div>
             </div>
@@ -31,14 +41,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Data:</label>
+                    <label>Data: *</label>
                     <input class="form-control" [(ngModel)]="providedService.date" type="text" name="date" id="inputDate">
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Preço:</label>
+                    <label>Preço: *</label>
                     <input class="form-control" [(ngModel)]="providedService.price" type="text" name="price" id="inputPrice">
                 </div>
             </div>
