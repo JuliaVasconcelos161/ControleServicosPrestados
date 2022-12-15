@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  userName?: string;
+  username?: string;
   password?: string;
   loginError?: boolean;
   registrating?: boolean;
