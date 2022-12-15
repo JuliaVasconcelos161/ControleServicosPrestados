@@ -11,19 +11,24 @@ import { ClientsModule } from './clients/clients.module';
 import { ClientsService } from './clients.service';
 import { ProvidedServiceModule } from './provided-service/provided-service.module';
 import { ProvidedServiceService } from './provided-service.service';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     TemplateModule,
     ClientsModule,
     ProvidedServiceModule
+    
   ],
   providers: [
     ClientsService,
