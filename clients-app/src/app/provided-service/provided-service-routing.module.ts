@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LayoutComponent } from '../layout/layout.component';
 import { ProvidedServiceFormComponent } from './provided-service-form/provided-service-form.component';
 import { ProvidedServiceListComponent } from './provided-service-list/provided-service-list.component';
 
 const routes: Routes = [
-  { path: 'provided-service-form', component: ProvidedServiceFormComponent},
-  { path: 'provided-service-list', component: ProvidedServiceListComponent}
+  { path: 'provided-services', component: LayoutComponent, children: [
+    { path: 'form', component: ProvidedServiceFormComponent},
+    { path: 'list', component: ProvidedServiceListComponent},
+    { path: '', redirectTo: '/provided-services/list', pathMatch: 'full'}
+  ]}
 ];
 
 @NgModule({

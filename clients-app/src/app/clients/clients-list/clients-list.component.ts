@@ -24,7 +24,7 @@ export class ClientsListComponent {
   }
 
   newRegistration() {
-    this.router.navigate(['/clients-form'])
+    this.router.navigate(['/clients/form'])
   }
 
   prepareDeletion(client: Client) {
