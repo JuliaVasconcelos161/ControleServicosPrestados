@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProvidedServiceService } from '../../provided-service.service';
+import { ProvidedServiceSearch } from './providedServiceSearch';
+
 
 @Component({
   selector: 'app-provided-service-list',
@@ -6,11 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./provided-service-list.component.css']
 })
 export class ProvidedServiceListComponent implements OnInit{
-  name?: string;
-  month?: number;
+  name!: string;
+  month!: number;
   months: number[];
+  list!: ProvidedServiceSearch[];
 
-  constructor() {
+  constructor(
+    private service: ProvidedServiceService
+  ) {
     this.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   }
 
@@ -19,6 +25,7 @@ export class ProvidedServiceListComponent implements OnInit{
   }
 
   searchService() {
-    console.log(this.name, this.month);
+    this.service.searchProvidedService(this.name, this.month)
+      .subscribe(response => this.list = response);
   }
 }
