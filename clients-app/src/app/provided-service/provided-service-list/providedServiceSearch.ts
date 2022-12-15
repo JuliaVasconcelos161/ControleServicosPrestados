@@ -4,5 +4,5 @@ export class ProvidedServiceSearch {
     description?: string;
     value?: number;
     date?: string;
-    client?: Client;
+    client!: Client;
 }

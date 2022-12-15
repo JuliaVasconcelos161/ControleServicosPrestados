@@ -13,6 +13,7 @@ export class ProvidedServiceListComponent implements OnInit{
   month!: number;
   months: number[];
   list!: ProvidedServiceSearch[];
+  message!: string;
 
   constructor(
     private service: ProvidedServiceService
@@ -26,6 +27,12 @@ export class ProvidedServiceListComponent implements OnInit{
 
   searchService() {
     this.service.searchProvidedService(this.name, this.month)
-      .subscribe(response => this.list = response);
+      .subscribe(response => {
+        this.list = response;
+        if(this.list.length <= 0) {
+          this.message = "Nenhum registro encontrado."
+      } else {
+        this.message = '';
+      }});
   }
 }
