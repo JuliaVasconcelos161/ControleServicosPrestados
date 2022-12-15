@@ -13,12 +13,14 @@ import { ProvidedServiceModule } from './provided-service/provided-service.modul
 import { ProvidedServiceService } from './provided-service.service';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    LayoutComponent
   ],
   imports: [
     FormsModule,
