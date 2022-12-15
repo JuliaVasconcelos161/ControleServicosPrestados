@@ -1,4 +1,4 @@
-<h1 class="mt-4"></h1>
+<h1 class="mt-4">Serviços</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">Novo</li>
 </ol>
@@ -21,7 +21,7 @@
                     <select class="form-control" 
                         [ngModelOptions]="{standalone: true}"
                         [(ngModel)]="providedService.clientId">
-                        <option value="">Selecione...</option>
+                        <option value="">Selecione o cliente desejado...</option>
                         <option *ngFor="let client of clients" [ngValue]="client.id">
                             {{ client.name }}
                         </option>
