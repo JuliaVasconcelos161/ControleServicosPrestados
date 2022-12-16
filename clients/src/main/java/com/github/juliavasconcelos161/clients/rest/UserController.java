@@ -1,6 +1,6 @@
 package com.github.juliavasconcelos161.clients.rest;
 
-import com.github.juliavasconcelos161.clients.model.entities.User;
+import com.github.juliavasconcelos161.clients.model.entities.UserLogin;
 import com.github.juliavasconcelos161.clients.model.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,8 +17,8 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveUser(@RequestBody @Valid User user)
+    public void saveUser(@RequestBody @Valid UserLogin userLogin)
     {
-        repository.save(user);
+        repository.save(userLogin);
     }
 }
