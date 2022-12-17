@@ -29,6 +29,20 @@ export class AuthService {
     }
     return null;
   }
+
+  loggingOut() {
+    localStorage.removeItem('access_token');
+  }
+
+  getAuthenticatedUser() {
+    const token = this.getToken();
+    if(token) {
+      const user = this.jwtHelper.decodeToken(token).user_name;
+      return user;
+    }
+    return null;
+  }
+
   isAuthenticated() : boolean {
     const token = this.getToken();
     if(token) {
