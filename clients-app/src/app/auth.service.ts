@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { UserLogin } from './login/userLogin';
 
 import { environment } from 'src/environments/environment';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,11 +15,26 @@ export class AuthService {
   tokenURL: string = environment.apiURLBase + environment.getTokenUrl;
   clientId: string = environment.clientId;
   clientSecret: string = environment.clientSecret;
+  jwtHelper: JwtHelperService = new JwtHelperService();
+  
   constructor(
     private http: HttpClient
   ) { }
 
+  getToken() {
+    const tokenString = localStorage.getItem('access_token');
+    if(tokenString) {
+      const token = JSON.parse(tokenString).access_token;
+      return token;
+    }
+    return null;
+  }
   isAuthenticated() : boolean {
+    const token = this.getToken();
+    if(token) {
+      const expired = this.jwtHelper.isTokenExpired(token);
+      return !expired;
+    }
     return false;
   }
   saveUser(userLogin: UserLogin) : Observable<any> {
