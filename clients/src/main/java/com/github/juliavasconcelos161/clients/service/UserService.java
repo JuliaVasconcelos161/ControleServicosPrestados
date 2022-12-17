@@ -17,7 +17,7 @@ public class UserService implements UserDetailsService {
 
     public UserLogin saveUser(UserLogin userLogin)
     {
-        boolean exists = repository.existsByUserName(userLogin.getUsername());
+        boolean exists = repository.existsByUsername(userLogin.getUsername());
         if(exists)
         {
             throw new RegistratedClientException(userLogin.getUsername());

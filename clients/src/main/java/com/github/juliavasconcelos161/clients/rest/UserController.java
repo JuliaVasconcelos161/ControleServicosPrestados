@@ -2,7 +2,6 @@ package com.github.juliavasconcelos161.clients.rest;
 
 import com.github.juliavasconcelos161.clients.exception.RegistratedClientException;
 import com.github.juliavasconcelos161.clients.model.entities.UserLogin;
-import com.github.juliavasconcelos161.clients.model.repository.UserRepository;
 import com.github.juliavasconcelos161.clients.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +15,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class UserController {
 
-    private UserService service;
+    private final UserService service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
