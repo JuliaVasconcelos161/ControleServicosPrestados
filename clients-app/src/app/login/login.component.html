@@ -1,52 +1,54 @@
-<div id="layoutAuthentication">
-    <div id="layoutAuthentication_content">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-5">
-                    <div class="card shadow-lg border-0 rounded-lg mt-5">
-                        <div class="card-header">
-                            <h3 class="text-center font-weigth-light my-4">
-                                {{ registrating ? 'Cadastro' : 'Entrar'}}
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="alert alert-success" *ngIf="successMessage">
-                                {{ successMessage }}
+<div class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header">
+                                <h3 class="text-center font-weigth-light my-4">
+                                    {{ registrating ? 'Cadastro' : 'Entrar'}}
+                                </h3>
                             </div>
-                            <div class="alert alert-danger" *ngFor="let error of errors">
-                                {{ error }}
+                            <div class="card-body">
+                                <div class="alert alert-success" *ngIf="successMessage">
+                                    {{ successMessage }}
+                                </div>
+                                <div class="alert alert-danger" *ngFor="let error of errors">
+                                    {{ error }}
+                                </div>
+
+                                <form #loginForm="ngForm" (submit)="onSubmit()">
+                                    <div class="form-group">
+                                        <label class="small mb-1">Usuário</label>
+                                        <input type="text" name="username" [(ngModel)]="username" autocomplete="off" class="form-control py-4" placeholder="Digite seu usuário">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="small mb-1">Senha</label>
+                                        <input type="text" name="password" [(ngModel)]="password" class="form-control py-4" placeholder="Digite sua senha">
+                                    </div>
+
+                                    <div class="form-group align-items-center justify-content-between mt-4 mb-0">
+                                        <button type="submit" class="btn btn-primary" *ngIf="!registrating">
+                                            Enviar
+                                        </button>
+
+                                        <button type="button" class="btn btn-success" (click)="userRegistration()"  *ngIf="registrating">
+                                            Cadastrar
+                                        </button>
+
+                                        <button type="button" (click)="cancelRegistration()" class="btn btn-danger ml-1" *ngIf="registrating">
+                                            Cancelar
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
 
-                            <form #loginForm="ngForm" (submit)="onSubmit()">
-                                <div class="form-group">
-                                    <label class="small mb-1">Usuário</label>
-                                    <input type="text" name="username" [(ngModel)]="username" class="form-control py-4" placeholder="Digite seu usuário">
+                            <div class="card-footer text-center">
+                                <div class="small">
+                                    <a href="#" (click)="prepareRegistration($event)">Não possui Usuário? Cadastre-se!</a>
                                 </div>
-
-                                <div class="form-group">
-                                    <label class="small mb-1">Senha</label>
-                                    <input type="text" name="password" [(ngModel)]="password" class="form-control py-4" placeholder="Digite sua senha">
-                                </div>
-
-                                <div class="form-group align-items-center justify-content-between mt-4 mb-0">
-                                    <button type="submit" class="btn btn-primary" *ngIf="!registrating">
-                                        Enviar
-                                    </button>
-
-                                    <button type="button" class="btn btn-success" (click)="userRegistration()"  *ngIf="registrating">
-                                        Cadastrar
-                                    </button>
-
-                                    <button type="button" (click)="cancelRegistration()" class="btn btn-danger ml-1" *ngIf="registrating">
-                                        Cancelar
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="card-footer text-center">
-                            <div class="small">
-                                <a href="#" (click)="prepareRegistration($event)">Não possui Usuário? Cadastre-se!</a>
                             </div>
                         </div>
                     </div>

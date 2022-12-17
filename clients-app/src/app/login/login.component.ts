@@ -9,8 +9,8 @@ import { UserLogin } from './userLogin';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username?: string;
-  password?: string;
+  username!: string;
+  password!: string;
   registrating?: boolean;
   successMessage?: string;
   errors?: String[];
@@ -21,7 +21,14 @@ export class LoginComponent {
   ) { }
 
   onSubmit() {
-    this.router.navigate(['/home']);
+    this.authService
+        .tryLogin(this.username, this.password)
+        .subscribe(response => {
+          console.log(response);
+          this.router.navigate(['/home']);
+        }, errorResponse => {
+          this.errors = ['Usuário e/ou senha incorreto(s).'];
+        });
   }
 
   prepareRegistration(event: { preventDefault: () => void; }) { //diferente
@@ -41,8 +48,12 @@ export class LoginComponent {
         .saveUser(userLogin)
         .subscribe( response => {
           this.successMessage = "Cadastro realizado com sucesso! Efetue o login.";
+          this.registrating = false;
+          this.username = '';
+          this.password = '';
+          this.errors = [];
         }, errorResponse => {
-          this.successMessage = "";
+          this.successMessage = '';
           this.errors = errorResponse.error.errors;
         })
   }
